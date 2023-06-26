@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Left Panel Example</title>
+    <style>
+        body {
+            display: flex;
+        }
+
+        #left-panel {
+            width: 200px;
+            background-color: #c9e399;
+            padding: 10px;
+        }
+
+        #content {
+            flex: 1;
+            padding: 10px;
+        }
+
+        /* Styling for the active component */
+        .active {
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function showContent(component) {
+            // Hide all content sections
+            var sections = document.getElementsByClassName("content-section");
+            for (var i = 0; i < sections.length; i++) {
+                sections[i].style.display = "none";
+            }
+
+            // Show the selected content section
+            var contentSection = document.getElementById(component);
+            contentSection.style.display = "block";
+
+            // Update the active class for the selected component
+            var components = document.getElementsByClassName("component");
+            for (var j = 0; j < components.length; j++) {
+                components[j].classList.remove("active");
+            }
+            document.getElementById(component + "-component").classList.add("active");
+        }
+    </script>
+</head>
+<body>
+    <div id="left-panel">
+        <div class="component active" id="home-component" onclick="showContent('home')">Home</div>
+        <div class="component" id="contact-component" onclick="showContent('contact')">Contact</div>
+        <div class="component" id="info-component" onclick="showContent('information')">Information</div>
+        <div class="component" id="guide-component" onclick="showContent('guide')">Guide</div>
+    </div>
+    <div id="content">
+        <div id="home" class="content-section" style="display: block;">
+            <h1>Welcome to the Home Page</h1>
+            <p>This is the home page content.</p>
+        </div>
+        <div id="contact" class="content-section">
+            <h1>Contact Information</h1>
+            <p>This is the contact information.</p>
+        </div>
+        <div id="information" class="content-section">
+            <h1>Information</h1>
+            <p>This is some information.</p>
+        </div>
+        <div id="guide" class="content-section">
+            <h1>Guide</h1>
+            <p>This is the guide.</p>
+        </div>
+    </div>
+</body>
+</html>
